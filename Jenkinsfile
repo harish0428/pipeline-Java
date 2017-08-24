@@ -25,7 +25,7 @@
       }
       stage("Running on Centos") { 
         agent { 
-         label 'CentOS'
+         label 'CentOs'
        }
        steps {
         sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
