@@ -1,25 +1,36 @@
  pipeline { 
-    agent {
-      label 'master'
-    }
+    agent none 
 
     stages {
       stage('build') {
+        agent {
+          label 'apache'
+        }
         steps { 
           sh 'ant -f build.xml -v'
        }
-      }
+       post { 
+         success { 
+           archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
+       }
+     }
+    }
      stage('deploy'){
-        steps {
+      agent {
+        label 'apache'
+        }
+         steps {
           sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
        }
       }
-
-    }
-
-     post { 
-       always {
-         archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-        }
-      }
-    }
+      stage("Running on Centos") { 
+        agent { 
+         label 'CentOS'
+       }
+       steps {
+        sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
+       }
+     }
+   }
+ }
