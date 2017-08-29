@@ -38,7 +38,7 @@
       }
       steps {
        sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
-       sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
+       sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 5"
       }
     }
      stage('Promote to Green') {
