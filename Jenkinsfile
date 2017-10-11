@@ -34,7 +34,7 @@
      }
      stage("Test on Debian") {
        agent {
-          docker 'openjdk:8u141-jre'
+          docker 'openjdk:8-jre'
       }
       steps {
        sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
