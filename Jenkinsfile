@@ -25,7 +25,7 @@
       }
       stage("Running on Centos") { 
         agent { 
-         label 'CentOs'
+         label 'apache'
        }
        steps {
         sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
@@ -39,14 +39,6 @@
       steps {
        sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 5"
-      }
-    }
-     stage('Promote to Green') {
-       agent { 
-         label 'apache'
-      } 
-       steps {
-         sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
       }
     }
   }
