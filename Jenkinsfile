@@ -32,7 +32,7 @@
         sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
        }
      }
-     stage("Test on Debian") {
+     stage("Build Docker Image") {
        agent {
          label 'CentOS'
       }
