@@ -37,9 +37,7 @@
          label 'CentOS'
       }
       steps {
-       sh "docker pull 'openjdk:8-jre'"
-       sh "wget http://mahank286.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
-       sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 5"
+       sh "docker build -f /var/lib/jenkins/workspace/My Java_Project/Dockerfile -t Sampleproject ."
       }
     }
   }
