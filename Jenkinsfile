@@ -37,7 +37,7 @@
          label 'CentOS'
       }
       steps {
-       sh "docker build -f /var/lib/jenkins/workspace/Java_Project/Dockerfile -t sampleimage ."
+       sh "docker build -f /var/lib/jenkins/workspace/Java_Project/Dockerfile -t sample2 ."
       }
     }
   }
